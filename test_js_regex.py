@@ -41,6 +41,8 @@ def test_expected_transforms(pattern, good_match, bad_match):
         pytest.param(r"\d", "1", "߀", marks=SKIP_ON_PY2),  # NKO DIGIT ZERO
         (r"\D", "߀", "1"),
         pytest.param(r"\w", "a", "é", marks=SKIP_ON_PY2),  # Latin-1 e-acute
+        (r"\w", "1", "߀"),
+        (r"\w", "_", "/"),
         (r"\W", "é", "a"),
         pytest.param(r"\s", "\t", "\xa0", marks=SKIP_ON_PY2),  # non-breaking space
         (r"\S", "\xa0", "\t"),

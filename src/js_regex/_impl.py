@@ -55,8 +55,8 @@ def compile(pattern, flags=0):
         (r"\a", "\a"),
         (r"\d", "[0-9]"),
         (r"\D", "[^0-9]"),
-        (r"\w", "[A-Za-z]"),
-        (r"\W", "[^A-Za-z]"),
+        (r"\w", "[A-Za-z0-9_]"),
+        (r"\W", "[^A-Za-z0-9_]"),
         (r"\s", "[ \t\n\r\x0b\x0c]"),
         (r"\S", "[^ \t\n\r\x0b\x0c]"),
     ]:
