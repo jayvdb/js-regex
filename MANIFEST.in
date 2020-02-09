@@ -1,0 +1,6 @@
+include LICENSE README.md
+include *.py
+include tox.ini
+recursive-include deps *.in
+recursive-include deps *.md
+recursive-include deps *.txt
