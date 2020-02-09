@@ -32,6 +32,23 @@ SKIP_BEFORE_36 = pytest.mark.skipif(python_version < (3, 6), reason="also old")
 def test_expected_transforms(pattern, good_match, bad_match):
     regex = js_regex.compile(pattern)
     assert regex.search(good_match)
+    assert len(regex.findall(good_match)) == 1
+    assert not regex.search(bad_match)
+
+
+@pytest.mark.parametrize(
+    "pattern,good_match,bad_match",
+    [
+        ("^abc\n$", "abc\n", "abc"),
+        ("^abc$|^def$", "abc", "abc\n"),
+        ("^abc$|^def$", "def", "def\n"),
+        (r"^abc\$", "abc$", "abc"),
+    ],
+)
+def test_expected_multiline_transforms(pattern, good_match, bad_match):
+    regex = js_regex.compile(pattern, re.MULTILINE)
+    assert regex.search(good_match)
+    assert len(regex.findall(good_match)) == 1
     assert not regex.search(bad_match)
 
 
